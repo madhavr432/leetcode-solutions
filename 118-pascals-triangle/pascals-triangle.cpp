@@ -1,23 +1,22 @@
 class Solution {
 public:
-    int ncr(int r, int c) {
-        int res =1;
-        for(int i =0;i<c-1;i++){
-            res*=(r-1-i);
-            res/=i+1;
+    vector<int>ncr(int r) {
+        long long ans =1;
+        vector<int>ansrow;
+        ansrow.push_back(1);
+        for(int i =1;i<r;i++){
+            ans*=(r-i);
+            ans/=i;
+            ansrow.push_back(ans);
         }
-        return res;
+        return ansrow;
     }
     vector<vector<int>> generate(int n) {
         vector<vector<int>> vec;
         
         for(int r =1;r<=n;r++){
-            vector<int>row;
-            for(int c=1;c<=r;c++){
-                int res = ncr(r,c);
-                row.push_back(res);
-            }
-            vec.push_back(row);
+            
+            vec.push_back(ncr(r));
 
         }
         return vec;

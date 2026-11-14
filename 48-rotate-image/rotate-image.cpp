@@ -3,13 +3,18 @@ public:
     void rotate(vector<vector<int>>& nums) {
         int n = nums.size();
         vector<vector<int>>vec;
-        for(int i =0;i<n;i++){
-            vector<int>row;
-            for(int j =n-1;j>=0;j--){
-                row.push_back(nums[j][i]);
+        int i =0;
+        
+        while(i<n){
+            int j =i+1;
+            while(j<n){
+                swap(nums[i][j],nums[j][i]);
+                j++;
             }
-            vec.push_back(row);
+            i++;
         }
-        nums = vec;
+        for(i =0;i<n;i++){
+            reverse(nums[i].begin(),nums[i].end());
+        }
     }
 };

@@ -6,9 +6,9 @@ public:
         unordered_map<int, int>m;
         for(int i =0;i<n;i++){
             int sub = target-nums[i];
-            auto it = m.find(sub);
-            if(it !=m.end()){
-                return{it->second, i};
+            
+            if(m.find(sub) !=m.end()){
+                return{m[sub], i};
             }
             else{
                 m[nums[i]]=i;

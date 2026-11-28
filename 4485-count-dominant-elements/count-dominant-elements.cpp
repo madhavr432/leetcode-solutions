@@ -1,24 +1,21 @@
 class Solution {
 public:
     int countDominantElements(vector<int>& nums) {
-        int n = nums.size();
-        if(n == 1){
-            return 1;
-        }
-        int count =0;
-        if(nums[0]>=nums[1]){
-            count++;
-        }
-        if(nums[n-1]>=nums[n-2]){
-            count++;
-        }
-        for(int i =1;i<n-1;i++){
-            float avg = (float(nums[i-1]+nums[i+1]))/2;
-            
-            if(nums[i]>=avg){
-                count++;
+        int c=0;
+        int n=nums.size();
+        if(n==1) return n;
+        if(n==2) return 1 + (nums[0]==nums[1]);
+        for(int i=1;i<n-1;++i){
+            if((2*nums[i])>=(nums[i+1]+nums[i-1])){
+                ++c;
             }
         }
-        return count;
+        if(nums[0]>=nums[1]){
+            ++c;
+        }
+        if(nums.back()>=nums[n-2]){
+            ++c;
+        }
+        return c;
     }
 };
